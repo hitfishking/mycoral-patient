@@ -1,3 +1,4 @@
+
 ## Coral Health Patient App
 
 This is the main app to be used by patients to interact with their medical records on the blockchain.
@@ -24,4 +25,10 @@ This milestone will use an Ethereum testnet (or private net) to store metadata, 
 
 #### Full release
 We will migrate to the real network
+
+
+## Trouble Shooting:
+##### 1) "Callback URL mismatch" error occured when visit the app from Expo Client.   
+This error relates to the [AuthSession](https://docs.expo.io/versions/latest/sdk/auth-session.html) class in expo.
+
 
