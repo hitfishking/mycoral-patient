@@ -16,7 +16,7 @@ function toQueryString(params) {
     .join('&');
 }
 
-export class LoginScreen extends Component {
+export class LoginScreen extends Component {    //定义class时直接export；
   state = {
     name: undefined
   }
@@ -24,10 +24,10 @@ export class LoginScreen extends Component {
   constructor(props) {
     super(props);
 
-    if (this.props.navigation.state &&
+    if (this.props.navigation.state &&    //LoginScreen是在App StackNavigator中的，故其参数中有navigation条目；
       this.props.navigation.state.params &&
       this.props.navigation.state.params.logout) {
-      this.state = {needsLogin: true};
+      this.state = {needsLogin: true};  //此时name属性还在否?
     }
   }
 
@@ -35,7 +35,7 @@ export class LoginScreen extends Component {
     if (!this.state.needsLogin) {
       let userInfo = await store.getUserInfo();
 
-      this.setState({userInfo});
+      this.setState({userInfo});     //setState()应该是从Component类中继承来的函数；
 
       if (!this.state.userInfo) {
         console.log("No name, doing login");
@@ -48,16 +48,16 @@ export class LoginScreen extends Component {
   }
 
   continueToApp() {
-    this.props.navigation.navigate('MainTabs');
+    this.props.navigation.navigate('MainTabs');  //本LoginScreen所在的是App StackNavigator；包括Login,MainTabs；
   }
 
   _loginWithAuth0 = async () => {
     this.setState({needsLogin: false});
     
-    const redirectUrl = AuthSession.getRedirectUrl();
+    const redirectUrl = AuthSession.getRedirectUrl(); //从https://auth.expo.io获取适当的URL，用于返回应用；
     console.log(`Redirect URL: ${redirectUrl}`);
     const result = await AuthSession.startAsync({
-      authUrl: `${auth0Domain}/authorize` + toQueryString({
+        authUrl: `${auth0Domain}/authorize` + toQueryString({
         client_id: auth0ClientId,
         response_type: 'token',
         scope: 'openid profile',

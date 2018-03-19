@@ -19,6 +19,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "exp": "^50.0.1",
     "expo": "^23.0.4",
     "flakeid": "^0.1.0",
     "moment": "^2.20.1",

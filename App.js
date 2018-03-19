@@ -101,7 +101,7 @@ function resetStack(navigation, routes) {
 const MainTabs = TabNavigator({
   MyRecords: {
     screen: MyRecordsNavigator,
-    navigationOptions: ({ navigation }) => ( {
+    navigationOptions: ({ navigation }) => ( {   //改变父容器的当前tab页标签的属性；
       tabBarLabel: 'My Records',
       tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons
@@ -152,13 +152,13 @@ const MainTabs = TabNavigator({
   },
 },
 {
-  tabBarOptions:{
+  tabBarOptions:{  //这是整个tabBar的属性，而不是某个tab页的属性；
     style:{marginTop: (Platform.OS === 'ios') ? 0 : Constants.statusBarHeight}
   }
 }
 );
 
-const App = StackNavigator({
+const App = StackNavigator({   //初始页面集合，先做Login，然后显式MainTabs主页菜单；
   Login: { screen: LoginScreen },
   MainTabs: { screen: MainTabs }
 },{
